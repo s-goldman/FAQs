@@ -52,13 +52,13 @@ Very bright objects can cause linear stripes across the array that have a very s
 
 **A: The "SKY_ANGL" keyword**
 
-Within the [header information](howtoaccessheader) of the data should be a "SKY_ANGL" keyword which is the long-axis position angle of the slit on the sky in degrees E of N.
+Within the [header information](#what-is-the-best-way-to-access-the-fits-header-information) of the data should be a "SKY_ANGL" keyword which is the long-axis position angle of the slit on the sky in degrees E of N.
 
 ### What is the FORCAST photometric uncertainty?
 
 **A: Typically 5-15%**
 
-The uncertainty is typically between 5-15%. To calculate this value you must add (in quadrature) the measurement of the flux calibration error ([header keyword](howtoaccessheader): ERRCALF), and the possible uncertainty on the flux model. The uncertainty is typically less variable in the short wavelength camera (SWC) and slightly more variable in the long wavelength camera (LWC) and in spectroscopy mode. For more details as well as a demonstration of the uncertainty calculation in python see the SOFIA data analysis [cookbooks](<https://sofia-data-analysis-cookbooks.readthedocs.io/en/latest/>).
+The uncertainty is typically between 5-15%. To calculate this value you must add (in quadrature) the measurement of the flux calibration error ([header keyword](#what-is-the-best-way-to-access-the-fits-header-information): ERRCALF), and the possible uncertainty on the flux model. The uncertainty is typically less variable in the short wavelength camera (SWC) and slightly more variable in the long wavelength camera (LWC) and in spectroscopy mode. For more details as well as a demonstration of the uncertainty calculation in python see the [SOFIA data analysis cookbooks](<https://sofia-data-analysis-cookbooks.readthedocs.io/en/latest/>).
 
 <!-- ### How accurate is the absolute flux calibration of the FORCAST imaging data?
 
@@ -84,20 +84,20 @@ A better way to estimate the error is starting from the raw data. In the observa
 Another method which can be used in the case of point sources is to evaluate the flux in several positions where no sources are expected. Also in this case, anyway, only a rough estimate can be derived since the response of the different pixels vary across the detector. -->
 
 
-The best way to estimate the error is by fitting multiple individual ramps at a single position using the raw data. Averaging these together can then give you a good estimate on the error. It is important that this is done using the raw data, as higher-level spectra are smoothed. If telluric features are not correctly removed, and appear in the smoothed spectrum, this can result in an over-estimate of the error.
+The best way to estimate the error is by fitting multiple individual ramps at a single position using the raw data, and averaging the results. It is important that this is done using the raw data, as higher-level spectra are smoothed. If telluric features are not correctly removed and appear in the smoothed spectrum, this can result in an over-estimate of the error.
 
 If the target is a point source another method is to evaluate the flux in several positions where no sources are expected. This however, only gives a rough estimate of the error since the pixel response varies across the detector.
 
-### Should I use FIFI-LS or GREAT for [CII]?
+### Should I use FIFI-LS or GREAT for \[CII\]?
 
 **A: FIFI-LS (in most cases)**
 
-Unless the line you are targeting is expected to be bright (e.g. extragalactic), it will not likely be detected by GREAT. We suggest using FIFI-LS for targeting [CII] due to its faster mapping speed. The trade-off, however, is that GREAT has a much higher spectral resolution. If the spectral resolution is critical, GREAT may be the better choice. See observing documentation and SITE (https://dcs.arc.nasa.gov/proposalDevelopment/SITE/index.jsp) for more details.
+Unless the line you are targeting is expected to be bright (e.g. extragalactic), it will not likely be detected by GREAT. We suggest using FIFI-LS for targeting \[CII\] due to its faster mapping speed. The trade-off, however, is that GREAT has a much higher spectral resolution. If the spectral resolution is critical, GREAT may be the better choice. See observing documentation and [SITE](<https://dcs.arc.nasa.gov/proposalDevelopment/SITE/index.jsp>) for more details.
 
 ### What is the beam/psf size of FIFI-LS?
 **A: Typically 2.3 - 3”**
 
-The intrinsic PSF of FIFI-LS is smaller than the PSF from the SOFIA telescope for most of the spectral range. Therefore, the telescope PSF should be the dominating factor for the effective spatial resolution of FIFI-LS on SOFIA. SOFIA's PSF size is highly wavelength dependent. For longer wavelengths, the PSF size is diffraction limited. For shorter wavelengths (<30 um) the PSF depends on diffraction, shear layer seeing, jitter, pointing accuracy, stability and drift (see https://www.worldscientific.com/doi/full/10.1142/S2251171718400111). It should also be noted that the pixel size of FIFI-LS is smaller than the PSF, meaning that the data are intentionally oversampled.
+The intrinsic PSF of FIFI-LS is smaller than the PSF from the SOFIA telescope for most of the spectral range. Therefore, the telescope PSF should be the dominating factor for the effective spatial resolution of FIFI-LS on SOFIA. SOFIA's PSF size is highly wavelength dependent. For longer wavelengths, the PSF size is diffraction limited. For shorter wavelengths (<30 um) the PSF depends on diffraction, shear layer seeing, jitter, pointing accuracy, stability and drift (see <https://www.worldscientific.com/doi/full/10.1142/S2251171718400111>). It should also be noted that the pixel size of FIFI-LS is smaller than the PSF, meaning that the data are intentionally oversampled.
 
 ### What is the pixel size of FIFI-LS data?
 
@@ -158,19 +158,19 @@ The result of the fits of these lines compared to the atmospheric model is conse
 - WVZ_OBS
 
 This value of water vapor is used for the atmospheric correction during the data reduction.
-To access these values one has to read the keyword of the header.
+o access these values one has to read the keyword of the header.
 
 ### What version of redux was used to reduce my data?
 
 **A: FITS header keyword: PIPEVERS**
 
-Within the reduced data products fits file there is a [header keyword](howtoaccessheader), PIPEVERS, which lists the redux version.
+Within the reduced data products fits file there is a [header keyword](#what-is-the-best-way-to-access-the-fits-header-information), PIPEVERS, which lists the redux version.
 
 ### What do the quality assurance comments mean, and should I be worried?
 
 **A: Look for Known Problem Codes and obvious words like contamination, problem, or failure.**
 
-SOFIA is aware of several common issues with the data that we denote with 4-letter codes starting with the letter O. We have a list of the Known Problems and their associated codes hosted on the SOFIA website (https://www.sofia.usra.edu/sites/default/files/USpot_DCS_DPS/Documents/DCS_Known_Issues.pdf). If you are still worried about the quality of the data after identifying any known issues, please contact the help-desk (sofia_help@sofia.usra.edu).
+SOFIA is aware of several common issues with the data that we denote with 4-letter codes starting with the letter O. We have a [list of the Known Problems](<https://www.sofia.usra.edu/sites/default/files/USpot_DCS_DPS/Documents/DCS_Known_Issues.pdf>) and their associated codes hosted on the SOFIA website. If you are still worried about the quality of the data after identifying any known issues, please contact the Helpdesk (sofia_help@sofia.usra.edu).
 
 Additionally, be aware of Quality Assurance comments with words like: contamination, problem, failure, artifact, degradation, or issue. If the comments include words like acquisition or test, you may not have the correct file.
 
@@ -240,7 +240,7 @@ If you have a tentative detection, consult the instrument and data handbooks to 
 
 **A: SVO filter service**
 
-The Spanish Virtual Observatory (SVO) provides filter/transmission curves for many observatories including SOFIA (<http://svo2.cab.inta-csic.es/svo/theory/fps3/index.php?id=SOFIA>)
+The Spanish Virtual Observatory ([SVO](<http://svo2.cab.inta-csic.es/svo/theory/fps3/index.php?id=SOFIA>)) provides filter/transmission curves for many observatories including SOFIA.
 
 <!-- ### Who is in charge of SOFIA? (USRA, DSI, NASA, DLR)
 

@@ -18,11 +18,11 @@ In Cycle 10 a correction was made to the USPOT exposure time calculation. This p
 
 The instrument scientists aim to keep a consistent thermal background to avoid issues of nonlinearity, keeping same level of charge in the detector wells relative to the saturation level. Due to the relatively lower thermal background at 5 and 6 microns the chop frequency is on the lower side and the frame-rate must be at least twice as large as the chop rate plus throwaways. When using F056, F064, and/or G063 FORCAST ends up throwing away more frames due to the lower thermal background and this creates the inflated overhead values at these wavelengths. Taking this into account now provide a more realistic estimate of the observing overheads.
 
-### Has a COMA aberration correction been done on the data?
+<!-- ### Has a COMA aberration correction been done on the data?
 
-**A: No, but it's unlikely to be needed**
+**A: No, but it's unlikely to be needed** -->
 
-Due to dithering?
+<!-- Due to dithering?
 
 ### Is there a ghost in my data?
 
@@ -34,7 +34,7 @@ s
 
 **A: 3 is fine but 5 is better**
 
-s
+s -->
 
 ### How can we check for memory/persistence issues?
 
@@ -60,13 +60,13 @@ Within the [header information](howtoaccessheader) of the data should be a "SKY_
 
 The uncertainty is typically between 5-15%. To calculate this value you must add (in quadrature) the measurement of the flux calibration error ([header keyword](howtoaccessheader): ERRCALF), and the possible uncertainty on the flux model. The uncertainty is typically less variable in the short wavelength camera (SWC) and slightly more variable in the long wavelength camera (LWC) and in spectroscopy mode. For more details as well as a demonstration of the uncertainty calculation in python see the SOFIA data analysis [cookbooks](https://sofia-data-analysis-cookbooks.readthedocs.io/en/latest/).
 
-### How accurate is the absolute flux calibration of the FORCAST imaging data?
+<!-- ### How accurate is the absolute flux calibration of the FORCAST imaging data?
 
 **A:**
 
-look in observers' handbook and then ask Bill Vacca
+look in observers' handbook and then ask Bill Vacca -->
 
-<!-- Look for some in Jame's talk -->
+<!-- Look for some in James Radomski's talk -->
 
 
 ## FIFI-LS
@@ -101,9 +101,9 @@ The intrinsic PSF of FIFI-LS is smaller than the PSF from the SOFIA telescope fo
 
 The PSF is oversampled in the FIFI-LS data. The spacing in the spatial dimensions (dx) is fixed for each channel at 1.5 arcseconds in the BLUE and 3.0 arcseconds in the RED. The projected pixel sizes are 12” in the red channel and 6” in the blue channel. These values are chosen to ensure an oversampling of the spatial FWHM by at least a factor of three.
 
-### What is the best strategy for observing point sources?
+<!-- ### What is the best strategy for observing point sources?
 
-**A: ask Juan Luis Verbena for help on this (GREAT; SOFIA School)?**
+**A: ask Juan Luis Verbena for help on this (GREAT; SOFIA School)?** -->
 
 ## The Data and Data Analysis
 
@@ -115,8 +115,6 @@ The boresight is the rectangle region that light passes through to get to the in
 
 
 ### What is the best way to access the FITS header information?
-
-(howtoaccessheader)=
 
 **A: Using python, DS9, or other packages**
 
@@ -172,7 +170,7 @@ SOFIA is aware of several common issues with the data that we denote with 4-lett
 
 Additionally, be aware of Quality Assurance comments with words like: contamination, problem, failure, artifact, degradation, or issue. If the comments include words like acquisition or test, you may not have the correct file.
 
-### What does this file extension mean?
+<!-- ### What does this file extension mean?
 
 **A: It differs for each instrument.**
 
@@ -216,7 +214,7 @@ CAL: Level 3 calibrated data </br>
 PMP: Level 4 map of polarization vectors
 
 **GREAT** </br>
-TMB: Level X ?
+TMB: Level X ? -->
 
 ### How do I find out if the data products are the raw or calibrated files?
 
@@ -238,21 +236,21 @@ If you have a tentative detection, consult the instrument and data handbooks to 
 
 **A: SVO filter service**
 
-The Spanish Virtual Observatory (SVO) provides filter/transmission curves for many observatories including SOFIA (http://svo2.cab.inta-csic.es/svo/theory/fps3/index.php?id=SOFIA)
+The Spanish Virtual Observatory (SVO) provides filter/transmission curves for many observatories including SOFIA (<http://svo2.cab.inta-csic.es/svo/theory/fps3/index.php?id=SOFIA>)
 
-### Who is in charge of SOFIA? (USRA, DSI, NASA, DLR)
+<!-- ### Who is in charge of SOFIA? (USRA, DSI, NASA, DLR)
 
 **A: NASA and the German Aerospace Center (DLR)**
 
-SOFIA is an 80/20 partnership between NASA and the German Aerospace Center (DLR). It is operated by the Universities Space Research Association (USRA) in partnership with the Deutsches SOFIA Institut (DSI). The SOFIA Science Center is located at NASA Ames (Mountain View, California) and the aircraft is operated out of NASA's Armstrong Flight Research Center at Edwards Air Force Base (Palmdale, California).
+SOFIA is an 80/20 partnership between NASA and the German Aerospace Center (DLR). It is operated by the Universities Space Research Association (USRA) in partnership with the Deutsches SOFIA Institut (DSI). The SOFIA Science Center is located at NASA Ames (Mountain View, California) and the aircraft is operated out of NASA's Armstrong Flight Research Center at Edwards Air Force Base (Palmdale, California). -->
 
-
+<!--
 ### What is the different between a series and a deployment?
 
 **A: Series flights return to Palmdale**
 
 A series is several days of flights with the same instrument. A deployment is typically an extended period in which the aircraft does not return to its home-base in Palmdale, CA.
-
+ -->
 
 ## Proposing
 
@@ -265,7 +263,7 @@ Yes, everyone is welcome to submit a proposal. Any associated funding, however, 
 
 ### Am I allowed to apply for an archival proposal?
 
-**A: Depends on the nationality of your institutiton**
+**A: Depends on the nationality of your institution**
 
 You must be at a US institution to received funding, and thus these proposals are only eligible at US institutions.
 

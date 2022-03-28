@@ -16,7 +16,7 @@ If you are interested in the absolute flux calibration of EXES data please conta
 
 In Cycle 10 a correction was made to the USPOT exposure time calculation. This primarily affected estimates at 5 and 6 microns where the thermal background of the sky is lower than those of the other filters and grisms.
 
-The instrument scientists aim to keep a consistent thermal background to avoid issues of nonlinearity, keeping same level of charge in the detector wells relative to the saturation level. Due to the relatively lower thermal background at 5 and 6 microns the chop frequency is on the lower side and the frame-rate must be at least twice as large as the chop rate plus throwaways. When using F056, F064, and/or G063 FORCAST ends up throwing away more frames due to the lower thermal background and this creates the inflated overhead values at these wavelengths. Taking this into account now provide a more realistic estimate of the observing overheads.
+The instrument scientists aim to keep a consistent thermal background to avoid issues of nonlinearity, keeping the same level of charge in the detector wells relative to the saturation level. Due to the relatively lower thermal background at 5 and 6 microns the chop frequency is on the lower side and the frame-rate must be at least twice as large as the chop rate plus throwaways. When using F056, F064, and/or G063 FORCAST ends up throwing away more frames due to the lower thermal background and this creates the inflated overhead values at these wavelengths. Taking this into account now provides a more realistic estimate of the observing overheads.
 
 <!-- ### Has a COMA aberration correction been done on the data?
 
@@ -46,7 +46,7 @@ Persistence is an effect on the detector, where observing a bright source leaves
 
 **A: Probably not**
 
-Very bright objects can cause linear stripes across the array that have a very slight (few percent) affect on the flux of the target but can intercept extended regions of lower flux surrounding the object making analysis difficult. Also when dealing with very bright sources the overall sensitivity of the array can be reduced which also can be detrimental if you are trying to detect very faint sources in the same field of very bright sources. This is not a worry typically til you get in the realm of hundreds of Janskys and also trying to detect faint sources of emission.
+Very bright objects can cause linear stripes across the array that have a very slight (few percent) affect on the flux of the target but can intercept extended regions of lower flux surrounding the object making analysis difficult. Also when dealing with very bright sources the overall sensitivity of the array can be reduced which also can be detrimental if you are trying to detect very faint sources in the same field of very bright sources. This is not a worry typically until you get in the realm of hundreds of Janskys and also trying to detect faint sources of emission.
 
 ### How do I find the on-sky angle of the FORCAST grism slit?
 
@@ -58,7 +58,7 @@ Within the [header information](howtoaccessheader) of the data should be a "SKY_
 
 **A: Typically 5-15%**
 
-The uncertainty is typically between 5-15%. To calculate this value you must add (in quadrature) the measurement of the flux calibration error ([header keyword](howtoaccessheader): ERRCALF), and the possible uncertainty on the flux model. The uncertainty is typically less variable in the short wavelength camera (SWC) and slightly more variable in the long wavelength camera (LWC) and in spectroscopy mode. For more details as well as a demonstration of the uncertainty calculation in python see the SOFIA data analysis [cookbooks](https://sofia-data-analysis-cookbooks.readthedocs.io/en/latest/).
+The uncertainty is typically between 5-15%. To calculate this value you must add (in quadrature) the measurement of the flux calibration error ([header keyword](howtoaccessheader): ERRCALF), and the possible uncertainty on the flux model. The uncertainty is typically less variable in the short wavelength camera (SWC) and slightly more variable in the long wavelength camera (LWC) and in spectroscopy mode. For more details as well as a demonstration of the uncertainty calculation in python see the SOFIA data analysis [cookbooks](<https://sofia-data-analysis-cookbooks.readthedocs.io/en/latest/>).
 
 <!-- ### How accurate is the absolute flux calibration of the FORCAST imaging data?
 
@@ -75,14 +75,18 @@ look in observers' handbook and then ask Bill Vacca -->
 
 **A: By averaging multiple fits to single-position ramps**
 
-The pipeline reports an error on each spectrum which is derived from the error in fitting the ramps. However, this estimate of error is tautological, since the ramp fitting is done by minimizing the Chi-2 of the fit.
+<!-- The pipeline reports an error on each spectrum derived from the error in fitting the ramps. However, this estimate of error is tautological, since the ramp fitting is done by minimizing the Chi-2 of the fit.
 
 One can think to evaluate the error directly from the spectra. However, the spectra are obtained by smoothing the data and the error can be underestimated. In the case that telluric features appear in the spectrum and are not perfectly corrected, this can lead to overestimating the error.
 
 A better way to estimate the error is starting from the raw data. In the observations, the observation of a ramp at a single position of the grating is repeated several times. By collecting all the repetitions together, a better estimate of the error can be found.
 
-Another method which can be used in the case of point sources it is to evaluate the flux in several positions where no sources are expected.
-Also in this case, anyway, only a rough estimate can be derived since the response of the different pixels vary across the detector.
+Another method which can be used in the case of point sources is to evaluate the flux in several positions where no sources are expected. Also in this case, anyway, only a rough estimate can be derived since the response of the different pixels vary across the detector. -->
+
+
+The best way to estimate the error is by fitting multiple individual ramps at a single position using the raw data. Averaging these together can then give you a good estimate on the error. It is important that this is done using the raw data, as higher-level spectra are smoothed. If telluric features are not correctly removed, and appear in the smoothed spectrum, this can result in an over-estimate of the error.
+
+If the target is a point source another method is to evaluate the flux in several positions where no sources are expected. This however, only gives a rough estimate of the error since the pixel response varies across the detector.
 
 ### Should I use FIFI-LS or GREAT for [CII]?
 

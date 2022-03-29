@@ -66,7 +66,7 @@ The uncertainty is typically between 5-15%. To calculate this value you must add
 
 look in observers' handbook and then ask Bill Vacca -->
 
-<!-- Look for some in James Radomski's talk -->
+<!-- Look for some FAQs in James Radomski's talk -->
 
 
 ## FIFI-LS
@@ -75,16 +75,7 @@ look in observers' handbook and then ask Bill Vacca -->
 
 **A: By averaging multiple fits to single-position ramps**
 
-<!-- The pipeline reports an error on each spectrum derived from the error in fitting the ramps. However, this estimate of error is tautological, since the ramp fitting is done by minimizing the Chi-2 of the fit.
-
-One can think to evaluate the error directly from the spectra. However, the spectra are obtained by smoothing the data and the error can be underestimated. In the case that telluric features appear in the spectrum and are not perfectly corrected, this can lead to overestimating the error.
-
-A better way to estimate the error is starting from the raw data. In the observations, the observation of a ramp at a single position of the grating is repeated several times. By collecting all the repetitions together, a better estimate of the error can be found.
-
-Another method which can be used in the case of point sources is to evaluate the flux in several positions where no sources are expected. Also in this case, anyway, only a rough estimate can be derived since the response of the different pixels vary across the detector. -->
-
-
-The best way to estimate the error is by fitting multiple individual ramps at a single position using the raw data, and averaging the results. It is important that this is done using the raw data, as higher-level spectra are smoothed. If telluric features are not correctly removed and appear in the smoothed spectrum, this can result in an over-estimate of the error.
+The best way to estimate the error is by fitting multiple individual ramps at a single position using the raw data, and averaging the results. It is important that this is done using the raw data, as higher-level spectra are smoothed. If telluric features are not correctly removed and appear in the smoothed spectrum, fitting these ramps can result in an over-estimate of the error.
 
 If the target is a point source another method is to evaluate the flux in several positions where no sources are expected. This however, only gives a rough estimate of the error since the pixel response varies across the detector.
 
@@ -122,7 +113,7 @@ The boresight is the rectangle region that light passes through to get to the in
 
 **A: Using python, DS9, or other packages**
 
-If you have astropy installed, use the following command in a terminal:
+If you have astropy installed, and you are interested in the "WVZ_OBS" keyword, use the following command in a terminal:
 
 ```
 fitsheader filename | grep WVZ_OBS

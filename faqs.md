@@ -247,7 +247,7 @@ SOFIA is an 80/20 partnership between NASA and the German Aerospace Center (DLR)
 A series is several days of flights with the same instrument. A deployment is typically an extended period in which the aircraft does not return to its home-base in Palmdale, CA.
  -->
 
-## Proposing
+<!-- ## Proposing
 
 ### Am I allowed to apply for SOFIA time?
 
@@ -278,4 +278,4 @@ If your proposal requires a budget (e.g. legacy proposals), we ask that budgets 
 
 **A: Maybe**
 
-The specified limits of SOFIA observations is 21-58 degrees. Below the lower vignetting limit, the background increases significantly as the instrument starts to see some of the door. These limits are not prohibitive, but mark the point of significant loss of sensitivity.
+The specified limits of SOFIA observations is 21-58 degrees. Below the lower vignetting limit, the background increases significantly as the instrument starts to see some of the door. These limits are not prohibitive, but mark the point of significant loss of sensitivity. -->

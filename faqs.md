@@ -6,7 +6,8 @@
 
 **A: Contact the Helpdesk**
 
-If you are interested in the absolute flux calibration of EXES data please contact the Helpdesk. Most of the data prior to 2022 has not had an accurate absolute flux scaling of the reduced data products. Depending on when the data were taken, a more accurate scaling can be applied.
+If you are interested in the absolute flux calibration of EXES data please contact the Helpdesk. The conversion factor to absolute flux units (ergs s<sup>-1</sup> cm<sup>-2</sup> (cm<sup>-1</sup>)<sup>-1</sup> x 78.4 --> 
+ Jy) was recently updated. Depending on when the data were taken, a more accurate scaling can be applied.
 
 ## FORCAST
 
@@ -88,7 +89,7 @@ Unless the line you are targeting is expected to be bright (e.g. extragalactic),
 ### What is the beam/psf size of FIFI-LS?
 **A: Typically 2.3 - 3”**
 
-The intrinsic PSF of FIFI-LS is smaller than the PSF from the SOFIA telescope for most of the spectral range. Therefore, the telescope PSF should be the dominating factor for the effective spatial resolution of FIFI-LS on SOFIA. SOFIA's PSF size is highly wavelength dependent. For longer wavelengths, the PSF size is diffraction limited. For shorter wavelengths (<30 um) the PSF depends on diffraction, shear layer seeing, jitter, pointing accuracy, stability and drift (see <https://www.worldscientific.com/doi/full/10.1142/S2251171718400111>). It should also be noted that the pixel size of FIFI-LS is smaller than the PSF, meaning that the data are intentionally oversampled.
+The intrinsic PSF of FIFI-LS is smaller than the PSF from the SOFIA telescope for most of the spectral range. Therefore, the telescope PSF should be the dominating factor for the effective spatial resolution of FIFI-LS on SOFIA. SOFIA's PSF size is highly wavelength dependent. For longer wavelengths, the PSF size is diffraction limited. For shorter wavelengths (<30 um) the PSF depends on diffraction, shear layer seeing, jitter, pointing accuracy, stability and drift (see [Temi et al. 2018](<https://www.worldscientific.com/doi/full/10.1142/S2251171718400111>)). It should also be noted that the pixel size of FIFI-LS is smaller than the PSF, meaning that the data are intentionally oversampled.
 
 ### What is the pixel size of FIFI-LS data?
 
@@ -149,7 +150,6 @@ The result of the fits of these lines compared to the atmospheric model is conse
 - WVZ_OBS
 
 This value of water vapor is used for the atmospheric correction during the data reduction.
-o access these values one has to read the keyword of the header.
 
 ### What version of redux was used to reduce my data?
 

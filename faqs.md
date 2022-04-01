@@ -11,9 +11,9 @@ If you are interested in the absolute flux calibration of EXES data please conta
 
 ## FORCAST
 
-### Why are the USPOT exposure times higher than before?
+### Why are the USPOT exposure times higher than before (before Cycle 10)?
 
-**A: Due to a change in the calculation (related to low thermal backgrounds)**
+**A: Due to a change in the ET calculation (related to low thermal backgrounds)**
 
 In Cycle 10 a correction was made to the USPOT exposure time calculation. This primarily affected estimates at 5 and 6 microns where the thermal background of the sky is lower than those of the other filters and grisms.
 
@@ -84,7 +84,7 @@ If the target is a point source another method is to evaluate the flux in severa
 
 **A: FIFI-LS (in most cases)**
 
-Unless the line you are targeting is expected to be bright (e.g. extragalactic), it will not likely be detected by GREAT. We suggest using FIFI-LS for targeting \[CII\] due to its faster mapping speed. The trade-off, however, is that GREAT has a much higher spectral resolution. If the spectral resolution is critical, GREAT may be the better choice. See observing documentation and [SITE](<https://dcs.arc.nasa.gov/proposalDevelopment/SITE/index.jsp>) for more details.
+Unless the line you are targeting is expected to be bright, it will not likely be detected by GREAT. We suggest using FIFI-LS for targeting \[CII\] due to its faster mapping speed. The trade-off, however, is that GREAT has a much higher spectral resolution. If the spectral resolution is critical, GREAT may be the better choice. See observing documentation and [SITE](<https://dcs.arc.nasa.gov/proposalDevelopment/SITE/index.jsp>) for more details.
 
 ### What is the beam/psf size of FIFI-LS?
 **A: Typically 2.3 - 3”**
@@ -114,7 +114,7 @@ The boresight is the rectangle region that light passes through to get to the in
 
 **A: Using python, DS9, or other packages**
 
-If you have astropy installed, and you are interested in the "WVZ_OBS" keyword, use the following command in a terminal:
+If you have astropy installed, and you are interested for example in the "WVZ_OBS" keyword, use the following command in a terminal:
 
 ```
 fitsheader filename | grep WVZ_OBS
@@ -130,6 +130,8 @@ with fits.open(filename) as hdul:
 ```
 
 *filename* corresponds to the name of the file (and its absolute path).
+
+You can also see the full header through IRSA. After launching your searchh, select the desired FITS file in the relevant instrument tab on the left hand side. A Data tab will appear, from which you can access the full header (using the 'information' icon). 
 
 ### How to get the PWV from the header
 

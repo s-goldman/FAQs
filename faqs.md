@@ -6,7 +6,7 @@
 
 **A: Contact the Helpdesk**
 
-If you are interested in the absolute flux calibration of EXES data please contact the Helpdesk. The conversion factor to absolute flux units (ergs s<sup>-1</sup> cm<sup>-2</sup> (cm<sup>-1</sup>)<sup>-1</sup> x 78.4 --> 
+If you are interested in the absolute flux calibration of EXES data please contact the Helpdesk. The conversion factor to absolute flux units (ergs s<sup>-1</sup> cm<sup>-2</sup> (cm<sup>-1</sup>)<sup>-1</sup> x 78.4 -->
  Jy) was recently updated. Depending on when the data were taken, a more accurate scaling can be applied.
 
 ## FORCAST
@@ -18,24 +18,6 @@ If you are interested in the absolute flux calibration of EXES data please conta
 In Cycle 10 a correction was made to the USPOT exposure time calculation. This primarily affected estimates at 5 and 6 microns where the thermal background of the sky is lower than those of the other filters and grisms.
 
 The instrument scientists aim to keep a consistent thermal background to avoid issues of nonlinearity, keeping the same level of charge in the detector wells relative to the saturation level. Due to the relatively lower thermal background at 5 and 6 microns the chop frequency is on the lower side and the frame-rate must be at least twice as large as the chop rate plus throwaways. When using F056, F064, and/or G063 FORCAST ends up throwing away more frames due to the lower thermal background and this creates the inflated overhead values at these wavelengths. Taking this into account now provides a more realistic estimate of the observing overheads.
-
-<!-- ### Has a COMA aberration correction been done on the data?
-
-**A: No, but it's unlikely to be needed** -->
-
-<!-- Due to dithering?
-
-### Is there a ghost in my data?
-
-**A: look at radomski talk**
-
-s
-
-### How many dithers do I need for photometry?
-
-**A: 3 is fine but 5 is better**
-
-s -->
 
 ### How can we check for memory/persistence issues?
 
@@ -61,14 +43,29 @@ Within the [header information](#what-is-the-best-way-to-access-the-fits-header-
 
 The uncertainty is typically between 5-15%. To calculate this value you must add (in quadrature) the measurement of the flux calibration error ([header keyword](#what-is-the-best-way-to-access-the-fits-header-information): ERRCALF), and the possible uncertainty on the flux model. The uncertainty is typically less variable in the short wavelength camera (SWC) and slightly more variable in the long wavelength camera (LWC) and in spectroscopy mode. For more details as well as a demonstration of the uncertainty calculation in python see the [SOFIA data analysis cookbooks](<https://sofia-data-analysis-cookbooks.readthedocs.io/en/latest/>).
 
-<!-- ### How accurate is the absolute flux calibration of the FORCAST imaging data?
+### Has a COMA aberration correction been done on the data?
 
-**A:**
+**A: No, but it's unlikely to be needed**
 
-look in observers' handbook and then ask Bill Vacca -->
+We can get some COMA effects in nod/match chop mode if the data have large (60") chops. Other than that, we do not typically see any COMA aberation.
 
-<!-- Look for some FAQs in James Radomski's talk -->
+### Is there a ghost in my data?
 
+**A: Possibly, but more likely if observing at 11.2um in dichroic mode**
+
+Within this filter and mode, a smaller and fainter secondary source can be seen next to the source with a flux ~1-2% of the main source. This effect can be exploited to detected faint sources at 11.2um, but with a broader filter than the 11.1um filter.
+
+### How many dithers do I need for photometry?
+
+**A: 3 is fine but 5 is better**
+
+Dithers take around 8 seconds to complete, and help compensate for bad pixels around the edges of the detector and the paint fleck effect seen after Cycle 7 in the short wavelength array. We encourage 5 dithers, however, 3 can be sufficient.
+
+### Can subtract the PSF from my image?
+
+**A: Yes, but this can be difficult**
+
+Given the nature of the observatory, the PSF during your observation may differ significantly from the PSF during the observation of the standard star. PSF-subtraction is commonly done by averaging the PSF of the standard star over the observation. 
 
 ## FIFI-LS
 
@@ -87,19 +84,16 @@ If the target is a point source another method is to evaluate the flux in severa
 Unless the line you are targeting is expected to be bright, it will not likely be detected by GREAT. We suggest using FIFI-LS for targeting \[CII\] due to its faster mapping speed. The trade-off, however, is that GREAT has a much higher spectral resolution. If the spectral resolution is critical, GREAT may be the better choice. See observing documentation and [SITE](<https://dcs.arc.nasa.gov/proposalDevelopment/SITE/index.jsp>) for more details.
 
 ### What is the beam/psf size of FIFI-LS?
-**A: Typically 2.3 - 3”**
+**A: The telescope PSF**
 
 The intrinsic PSF of FIFI-LS is smaller than the PSF from the SOFIA telescope for most of the spectral range. Therefore, the telescope PSF should be the dominating factor for the effective spatial resolution of FIFI-LS on SOFIA. SOFIA's PSF size is highly wavelength dependent. For longer wavelengths, the PSF size is diffraction limited. For shorter wavelengths (<30 um) the PSF depends on diffraction, shear layer seeing, jitter, pointing accuracy, stability and drift (see [Temi et al. 2018](<https://www.worldscientific.com/doi/full/10.1142/S2251171718400111>)). It should also be noted that the pixel size of FIFI-LS is smaller than the PSF, meaning that the data are intentionally oversampled.
 
 ### What is the pixel size of FIFI-LS data?
 
-**A: More than a factor of 3**
+**A: 3" (red channel) and 1.5" (blue), but these pixels are oversampled**
 
-The PSF is oversampled in the FIFI-LS data. The spacing in the spatial dimensions (dx) is fixed for each channel at 1.5 arcseconds in the BLUE and 3.0 arcseconds in the RED. The projected pixel sizes are 12” in the red channel and 6” in the blue channel. These values are chosen to ensure an oversampling of the spatial FWHM by at least a factor of three.
+The PSF is oversampled in the FIFI-LS data. The spacing in the spatial dimensions (dx) is fixed for each channel at 3.0 arcseconds in the RED and 1.5 arcseconds in the BLUE. These values are chosen to ensure an oversampling of the spatial FWHM by at least a factor of three. The projected pixel sizes, more representative of the spatial resolution of the data, are 12” in the red channel and 6” in the blue channel.
 
-<!-- ### What is the best strategy for observing point sources?
-
-**A: ask Juan Luis Verbena for help on this (GREAT; SOFIA School)?** -->
 
 ## The Data and Data Analysis
 
@@ -234,50 +228,3 @@ If you have a tentative detection, consult the instrument and data handbooks to 
 **A: SVO filter service**
 
 The Spanish Virtual Observatory ([SVO](<http://svo2.cab.inta-csic.es/svo/theory/fps3/index.php?id=SOFIA>)) provides filter/transmission curves for many observatories including SOFIA.
-
-<!-- ### Who is in charge of SOFIA? (USRA, DSI, NASA, DLR)
-
-**A: NASA and the German Aerospace Center (DLR)**
-
-SOFIA is an 80/20 partnership between NASA and the German Aerospace Center (DLR). It is operated by the Universities Space Research Association (USRA) in partnership with the Deutsches SOFIA Institut (DSI). The SOFIA Science Center is located at NASA Ames (Mountain View, California) and the aircraft is operated out of NASA's Armstrong Flight Research Center at Edwards Air Force Base (Palmdale, California). -->
-
-<!--
-### What is the different between a series and a deployment?
-
-**A: Series flights return to Palmdale**
-
-A series is several days of flights with the same instrument. A deployment is typically an extended period in which the aircraft does not return to its home-base in Palmdale, CA.
- -->
-
-<!-- ## Proposing
-
-### Am I allowed to apply for SOFIA time?
-
-**A: Yes**
-
-Yes, everyone is welcome to submit a proposal. Any associated funding, however, can only be hosted at US institutions.
-
-
-### Am I allowed to apply for an archival proposal?
-
-**A: Depends on the nationality of your institution**
-
-You must be at a US institution to received funding, and thus these proposals are only eligible at US institutions.
-
-### When am I allowed to apply for Directors Discretionary time?
-
-**A: Any time**
-
-Always, just ensure that the proposal is time-sensitive, and could not be submitted during the regular call or proposals.
-
-### When I submit a proposal, what kind of budget do I have to include?
-
-**A: A form that we can easily understand**
-
-If your proposal requires a budget (e.g. legacy proposals), we ask that budgets be submitted in a form that we can later parse into our standard format. We acknowledge that different institutions use different formats, and allow for them so long as we can easily parse the data when creating the budget.
-
-### My target is low in the sky, can I observe it?
-
-**A: Maybe**
-
-The specified limits of SOFIA observations is 21-58 degrees. Below the lower vignetting limit, the background increases significantly as the instrument starts to see some of the door. These limits are not prohibitive, but mark the point of significant loss of sensitivity. -->
